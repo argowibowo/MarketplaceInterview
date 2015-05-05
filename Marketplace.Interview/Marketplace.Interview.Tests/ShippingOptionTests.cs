@@ -18,6 +18,71 @@ namespace Marketplace.Interview.Tests
         }
 
         [Test]
+        public void NewShippingOptionTest()
+        {
+            var newShippingOption = new NewShipping()
+            {
+                NewShippingCosts = new[]
+                {
+                    new NewRegionShippingCost()
+                    {
+                        DestinationRegion = NewRegionShippingCost.Regions.UK,
+                        Amount = .5m
+                    },
+                    new NewRegionShippingCost()
+                    {
+                        DestinationRegion = NewRegionShippingCost.Regions.Europe,
+                        Amount = 1.5m
+                    }
+                },
+            };
+            var basket = new Basket()
+            {
+                LineItems = new List<LineItem>
+                {
+                    new LineItem()
+                    {
+                        SupplierId = 123,
+                        DeliveryRegion = RegionShippingCost.Regions.UK,
+                        Shipping = newShippingOption
+                    },
+                    new LineItem()
+                    {
+                        SupplierId = 123,
+                        DeliveryRegion = RegionShippingCost.Regions.UK,
+                        Shipping = newShippingOption
+                    },
+                }
+            };
+            decimal tempShippingAmt = 0;
+            foreach (var lineItem in basket.LineItems)
+            {
+                int count = 0;
+                Marketplace.Interview.Business.Shipping.NewShipping nsp = new Marketplace.Interview.Business.Shipping.NewShipping();
+                foreach (var lineItemTemp in basket.LineItems)
+                {
+                    if (lineItem.Shipping.ToString().Equals(nsp.ToString()) && 
+                        lineItemTemp.Shipping.ToString().Equals(nsp.ToString()) && 
+                        lineItem.SupplierId.Equals(lineItemTemp.SupplierId) && 
+                        lineItem.DeliveryRegion.Equals(lineItemTemp.DeliveryRegion))
+                    {
+                        count++;
+                    }
+                }
+                if (count > 1)
+                {
+                    tempShippingAmt = lineItem.Shipping.GetAmount(lineItem, basket) * 0.5m;
+                }
+                else
+                {
+                    tempShippingAmt = lineItem.Shipping.GetAmount(lineItem, basket);
+                }
+            }
+
+            Assert.That(tempShippingAmt, Is.EqualTo(0.25m),"Shipping Amount Is Not Correct");
+        }
+
+        [Test]
         public void PerRegionShippingOptionTest()
         {
             var perRegionShippingOption = new PerRegionShipping()
