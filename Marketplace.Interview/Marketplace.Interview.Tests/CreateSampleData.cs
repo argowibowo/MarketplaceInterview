@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Marketplace.Interview.Business.Core;
@@ -31,6 +31,17 @@ namespace Marketplace.Interview.Tests
                             new RegionShippingCost{DestinationRegion = RegionShippingCost.Regions.UK, Amount = .5m},
                             new RegionShippingCost{DestinationRegion = RegionShippingCost.Regions.Europe, Amount = 1m},
                             new RegionShippingCost{DestinationRegion = RegionShippingCost.Regions.RestOfTheWorld, Amount = 2m},
+                        }
+                    }
+                },
+                {
+                    "NewShipping", new NewShipping
+                    {
+                        NewShippingCosts = new List<NewRegionShippingCost>
+                        {
+                            new NewRegionShippingCost{DestinationRegion = NewRegionShippingCost.Regions.UK, Amount = .5m},
+                            new NewRegionShippingCost{DestinationRegion = NewRegionShippingCost.Regions.Europe, Amount = 1m},
+                            new NewRegionShippingCost{DestinationRegion = NewRegionShippingCost.Regions.RestOfTheWorld, Amount = 2m},
                         }
                     }
                 }
