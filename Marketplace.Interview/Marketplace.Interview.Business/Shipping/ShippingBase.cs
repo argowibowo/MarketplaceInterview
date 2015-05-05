@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Marketplace.Interview.Business.Basket;
@@ -10,7 +10,7 @@ namespace Marketplace.Interview.Business.Shipping
     {
         public static IEnumerable<Type> KnownTypes()
         {
-            return new[] {typeof (FlatRateShipping), typeof (PerRegionShipping)};
+            return new[] {typeof (FlatRateShipping), typeof (PerRegionShipping), typeof (NewShipping)};
         }
         
         public abstract string GetDescription(LineItem lineItem, Basket.Basket basket);
