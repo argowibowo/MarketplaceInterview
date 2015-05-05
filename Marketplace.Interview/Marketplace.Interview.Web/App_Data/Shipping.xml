@@ -24,4 +24,23 @@
             </a:PerRegionCosts>
         </Value>
     </KeyValueOfstringShippingBaseLIZpudIg>
+    <KeyValueOfstringShippingBaseLIZpudIg>
+        <Key>NewShipping</Key>
+        <Value i:type="a:NewShipping" xmlns:a="http://schemas.datacontract.org/2004/07/Marketplace.Interview.Business.Shipping">
+            <a:NewShippingCosts>
+                <a:NewRegionShippingCost>
+                    <a:Amount>0.5</a:Amount>
+                    <a:DestinationRegion>UK</a:DestinationRegion>
+                </a:NewRegionShippingCost>
+                <a:NewRegionShippingCost>
+                    <a:Amount>1</a:Amount>
+                    <a:DestinationRegion>Europe</a:DestinationRegion>
+                </a:NewRegionShippingCost>
+                <a:NewRegionShippingCost>
+                    <a:Amount>2</a:Amount>
+                    <a:DestinationRegion>RestOfTheWorld</a:DestinationRegion>
+                </a:NewRegionShippingCost>
+            </a:NewShippingCosts>
+        </Value>
+    </KeyValueOfstringShippingBaseLIZpudIg>
 </ArrayOfKeyValueOfstringShippingBaseLIZpudIg>
